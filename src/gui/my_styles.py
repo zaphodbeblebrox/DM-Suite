@@ -19,8 +19,12 @@ class MyStyles():
     COLOR_DISABLED = "#FF9494"
     COLOR_SCROLLBAR = "#4d4d4d"
     
+    # Call AFTER tk.TK() window creation
     @classmethod
     def set_ttk_element_styles(cls) -> None:
+        if not tk._default_root:
+            tk._default_root = tk.Tk()
+            tk._default_root.withdraw()
         # Create Notebook Style
         std_font = ('Segoe UI','10','bold')
         treeview_font = ('Segoe UI','10','normal')
