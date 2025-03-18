@@ -1,4 +1,4 @@
-from src.gui.index import ProgramWindow
+from source.gui.index import ProgramWindow
 
 
 myWindow = ProgramWindow()

@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 
-from src.gui.my_styles import MyStyles
+from source.gui.loot_generator_tab.index import TabLootGenerator
+from source.gui.my_styles import MyStyles
 
 
 class ProgramWindow:
@@ -10,7 +11,7 @@ class ProgramWindow:
         self.root.title("Random Loot Generator")
         # self.root.iconbitmap("dnd.ico")
         # self.root.geometry('1500x700')
-        self.root.config(background = MyStyles.COLOR_BACKGROUND)
+        self.root.config(background=MyStyles.COLOR_BACKGROUND)
         MyStyles.set_ttk_element_styles()
 
         # Tab Definitions
@@ -31,9 +32,9 @@ class ProgramWindow:
         self.notebook.add(self.tag_definitions, text="Tag Definitions")
         self.notebook.grid(row=0, column=0)
 
-        # Tab_Loot_Generator(self.color, self.tabGen, program_data)
+        TabLootGenerator(self.tabGen)
         # Tab_Enchantments(self.color, self.tabEnchantment, program_data)
         # Tab_Gem_Art(self.color, self.tabEnchantment, program_data)
 
     def start(self):
-        self.root.mainloop() #start monitoring and updating the GUI
+        self.root.mainloop()  # start monitoring and updating the GUI
