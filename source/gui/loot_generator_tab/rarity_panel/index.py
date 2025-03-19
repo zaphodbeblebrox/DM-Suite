@@ -3,13 +3,13 @@ from tkinter import ttk
 
 
 class RarityPanel:
-    def __init__(self, frame):
-        self.frame = frame
+    def __init__(self, root):
+        self.root = root
 
         self.varRty = tk.StringVar()
 
         ttk.Radiobutton(
-            self.frame,
+            self.root,
             text="Common",
             variable=self.varRty,
             value="C",
@@ -17,7 +17,7 @@ class RarityPanel:
         ).grid(sticky="w", row=0, column=0, pady=3)
 
         ttk.Radiobutton(
-            self.frame,
+            self.root,
             text="Uncommon",
             variable=self.varRty,
             value="U",
@@ -25,7 +25,7 @@ class RarityPanel:
         ).grid(sticky="w", row=1, column=0, pady=3)
 
         ttk.Radiobutton(
-            self.frame,
+            self.root,
             text="Rare",
             variable=self.varRty,
             value="R",
@@ -33,7 +33,7 @@ class RarityPanel:
         ).grid(sticky="w", row=2, column=0, pady=3)
 
         ttk.Radiobutton(
-            self.frame,
+            self.root,
             text="Very Rare",
             variable=self.varRty,
             value="V",
@@ -41,7 +41,7 @@ class RarityPanel:
         ).grid(sticky="w", row=3, column=0, pady=3)
 
         ttk.Radiobutton(
-            self.frame,
+            self.root,
             text="Legendary",
             variable=self.varRty,
             value="L",

@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import font, ttk
 
+from source.gui.loot_generator_tab.action_panel.index import ActionPanel
 from source.gui.loot_generator_tab.item_panel.index import ItemTypePanel
 from source.gui.loot_generator_tab.level_panel.index import LevelPanel
 from source.gui.loot_generator_tab.output_panel.index import OutputPanel
@@ -78,12 +79,10 @@ class TabLootGenerator:
         self.level_panel = LevelPanel(self.frame_lvl)
         self.rarity_panel = RarityPanel(self.frame_rarity)
         self.item_type_panel = ItemTypePanel(self.frame_types)
-        # self.buttons = Frame_Gen_Buttons(
-        #     self.color,
-        #     self.fGen3,
-        #     programData,
-        #     self.textbox,
-        #     self.levelCtrl,
-        #     self.rarityCtrl,
-        #     self.itCtrl,
-        # )
+        self.action_panel = ActionPanel(
+            root=self.frame_actions,
+            output_panel=self.output_panel,
+            level_panel=self.level_panel,
+            rarity_panel=self.rarity_panel,
+            item_type_panel=self.item_type_panel,
+        )

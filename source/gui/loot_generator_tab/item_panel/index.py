@@ -8,6 +8,7 @@ class ItemTypePanel:
     def __init__(self, root):
         self.root = root
         self.varState = []
+        # Can use if don't want all options selected by default. will need some work...
         # tempBoolList = []
         # for item_type in Items.item_types:
         #     tempBoolList.append(item_type)
