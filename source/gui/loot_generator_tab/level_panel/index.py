@@ -3,14 +3,14 @@ from tkinter import ttk
 
 
 class LevelPanel:
-    def __init__(self, root, numLevels):
+    def __init__(self, root):
         self.root = root
-        self.numLevels = numLevels
+        maxLevel = 20
 
         self.varLvl = tk.IntVar()
         self.rbLevels = []
 
-        for i in range(self.numLevels):
+        for i in range(maxLevel):
             self.label = "Level " + str(i + 1)
             self.rbLevels.append(
                 ttk.Radiobutton(

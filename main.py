@@ -1,6 +1,10 @@
 from source.gui.index import ProgramWindow
 
 
-myWindow = ProgramWindow()
+def main() -> None:
+    myWindow = ProgramWindow()
+    myWindow.start()
 
-myWindow.start()
+
+if __name__ == "__main__":
+    main()
