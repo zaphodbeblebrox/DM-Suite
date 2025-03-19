@@ -1,97 +1,45 @@
+from source.gui.loot_generator_tab.output_panel.index import OutputPanel
+
+
 class ButtonActions:
 
     @staticmethod
-    def individualTreasureB(party_level):
+    def individual_loot(party_level: int, output_panel: OutputPanel) -> None:
         rh = Randomizer_Handler(self.programData)
-        party_level = self.levelFrame.varLvl.get()
-        outputText = ""
         if party_level <= 4:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("0-4")
-            )
-            self.textFrame.newOutput(outputText)
+            data = self.programData.individualTreasure.get("0-4")
         elif party_level <= 10:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("5-10")
-            )
-            self.textFrame.newOutput(outputText)
+            data = self.programData.individualTreasure.get("5-10")
         elif party_level <= 16:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("11-16")
-            )
-            self.textFrame.newOutput(outputText)
+            data = self.programData.individualTreasure.get("11-16")
         elif party_level <= 20:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("17-20")
-            )
-            self.textFrame.newOutput(outputText)
+            data = self.programData.individualTreasure.get("17-20")
         else:
-            outputText = "Error!"
-            self.textFrame.newOutput(outputText)
+            output_panel.newOutput("Error!")
+            return
+        output_panel.newOutput(rh.indivTreasure(data))
 
-    def individualTreasureB(self):
+    @staticmethod
+    def horde_loot(party_level: int, output_panel: OutputPanel) -> None:
         rh = Randomizer_Handler(self.programData)
-        currentLvl = self.levelFrame.varLvl.get()
-        outputText = ""
-        if currentLvl <= 4:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("0-4")
-            )
-            self.textFrame.newOutput(outputText)
-        elif currentLvl <= 10:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("5-10")
-            )
-            self.textFrame.newOutput(outputText)
-        elif currentLvl <= 16:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("11-16")
-            )
-            self.textFrame.newOutput(outputText)
-        elif currentLvl <= 20:
-            outputText = rh.indivTreasure(
-                self.programData.individualTreasure.get("17-20")
-            )
-            self.textFrame.newOutput(outputText)
+        if party_level <= 4:
+            data_coins = self.programData.hordeTreasureCoins.get("0-4")
+            data_items = self.programData.hordeTreasureItems.get("0-4")
+        elif party_level <= 10:
+            data_coins = self.programData.hordeTreasureCoins.get("5-10")
+            data_items = self.programData.hordeTreasureItems.get("5-10")
+        elif party_level <= 16:
+            data_coins = self.programData.hordeTreasureCoins.get("11-16")
+            data_items = self.programData.hordeTreasureItems.get("11-16")
+        elif party_level <= 20:
+            data_coins = self.programData.hordeTreasureCoins.get("17-20")
+            data_items = self.programData.hordeTreasureItems.get("17-20")
         else:
-            outputText = "Error!"
-            self.textFrame.newOutput(outputText)
-
-    def hordeTreasureB(self):
-        rh = Randomizer_Handler(self.programData)
-        currentLvl = self.levelFrame.varLvl.get()
-        outputText = ""
-        if currentLvl <= 4:
-            outputText = rh.hordeTreasure(
-                self.programData.hordeTreasureCoins.get("0-4"),
-                self.programData.hordeTreasureItems.get("0-4"),
-                self.programData,
-            )
-            self.textFrame.newOutput(outputText)
-        elif currentLvl <= 10:
-            outputText = rh.hordeTreasure(
-                self.programData.hordeTreasureCoins.get("5-10"),
-                self.programData.hordeTreasureItems.get("5-10"),
-                self.programData,
-            )
-            self.textFrame.newOutput(outputText)
-        elif currentLvl <= 16:
-            outputText = rh.hordeTreasure(
-                self.programData.hordeTreasureCoins.get("11-16"),
-                self.programData.hordeTreasureItems.get("11-16"),
-                self.programData,
-            )
-            self.textFrame.newOutput(outputText)
-        elif currentLvl <= 20:
-            outputText = rh.hordeTreasure(
-                self.programData.hordeTreasureCoins.get("17-20"),
-                self.programData.hordeTreasureItems.get("17-20"),
-                self.programData,
-            )
-            self.textFrame.newOutput(outputText)
-        else:
-            outputText = "Error!"
-            self.textFrame.newOutput(outputText)
+            output_panel.newOutput("Error!")
+            return
+        output_panel.newOutput(
+            rh.hordeTreasure(data_coins, data_items, self.programData)
+        )
 
     def weaponDropB(self):
         rh = Randomizer_Handler(self.programData)

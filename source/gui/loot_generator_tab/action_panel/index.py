@@ -1,9 +1,9 @@
 import tkinter as tk
 
 from tkinter import ttk
-import random
 from functools import partial
 
+from source.gui.loot_generator_tab.action_panel.button_actions import ButtonActions
 from source.gui.loot_generator_tab.item_panel.index import ItemTypePanel
 from source.gui.loot_generator_tab.level_panel.index import LevelPanel
 from source.gui.loot_generator_tab.output_panel.index import OutputPanel
@@ -26,13 +26,29 @@ class ActionPanel:
         self.rarityFrame = rarity_panel
         self.itemTypeFrame = item_type_panel
 
+        self.levelFrame.varLvl.get()
+
         self.buttons = [
-            {"name": "Individual\nTreasure", "func": partial(self.dummy)},
-            {"name": "Horde\nTreasure", "func": partial(self.dummy)},
-            {"name": "Weapon Drop", "func": partial(self.dummy)},
-            {"name": "Art & Gems", "func": partial(self.dummy)},
-            {"name": "Enchanted Rune", "func": partial(self.dummy)},
-            {"name": "Roll Specific Item", "func": partial(self.dummy)},
+            {
+                "name": "Individual\nTreasure",
+                "func": partial(
+                    ButtonActions.individual_loot,
+                    self.levelFrame.varLvl.get(),
+                    output_panel,
+                ),
+            },
+            {
+                "name": "Horde\nTreasure",
+                "func": partial(
+                    ButtonActions.horde_loot,
+                    self.levelFrame.varLvl.get(),
+                    output_panel,
+                ),
+            },
+            {"name": "Weapon Drop", "func": partial(self.dummy)},  # weaponDropB
+            {"name": "Art & Gems", "func": partial(self.dummy)},  # artgemB
+            {"name": "Enchanted Rune", "func": partial(self.dummy)},  # runeB
+            {"name": "Roll Specific Item", "func": partial(self.dummy)},  # rollItemB
         ]
 
         for idx, btn in enumerate(self.buttons):
@@ -49,7 +65,7 @@ class ActionPanel:
     def dummy(self):
         pass
 
-    def create_border(self):
+    def create_border(self) -> tk.Frame:
         return tk.Frame(
             self.root,
             highlightcolor=MyStyles.COLOR_LABEL_TXT,
