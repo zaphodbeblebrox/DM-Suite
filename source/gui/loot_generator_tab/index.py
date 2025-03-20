@@ -11,21 +11,21 @@ from source.gui.my_styles import MyStyles
 
 class TabLootGenerator:
 
-    def __init__(self, root):
+    def __init__(self, root: ttk.Frame):
         self.root = root
 
         font_section_title = font.Font(weight="bold", size=10)
 
         # Generator Frame Definitions----------
 
-        self.frameGen = tk.LabelFrame(
+        self.frame_generator = tk.LabelFrame(
             self.root, bd=0, padx=5, pady=5, bg=MyStyles.COLOR_BACKGROUND
         )
-        self.frameGen.grid(row=0, column=0)
+        self.frame_generator.grid(row=0, column=0)
 
         self.frame_output = tk.LabelFrame(
-            self.frameGen,
-            text="Generator Output",
+            self.frame_generator,
+            text="Output Console",
             padx=5,
             pady=5,
             bg=MyStyles.COLOR_BACKGROUND,
@@ -33,7 +33,7 @@ class TabLootGenerator:
             font=font_section_title,
         )
         self.frame_actions = tk.LabelFrame(
-            self.frameGen,
+            self.frame_generator,
             text="Actions",
             padx=5,
             pady=5,
@@ -42,7 +42,7 @@ class TabLootGenerator:
             font=font_section_title,
         )
         self.frame_lvl = tk.LabelFrame(
-            self.frameGen,
+            self.frame_generator,
             text="Loot Level",
             padx=5,
             pady=5,
@@ -51,7 +51,7 @@ class TabLootGenerator:
             font=font_section_title,
         )
         self.frame_rarity = tk.LabelFrame(
-            self.frameGen,
+            self.frame_generator,
             text="Item Rarity",
             padx=5,
             pady=5,
@@ -60,7 +60,7 @@ class TabLootGenerator:
             font=font_section_title,
         )
         self.frame_types = tk.LabelFrame(
-            self.frameGen,
+            self.frame_generator,
             text="Item Types",
             padx=5,
             pady=5,

@@ -3,7 +3,7 @@ from tkinter import ttk
 
 
 class RarityPanel:
-    def __init__(self, root):
+    def __init__(self, root: tk.LabelFrame):
         self.root = root
 
         self.varRty = tk.StringVar()

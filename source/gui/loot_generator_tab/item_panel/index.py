@@ -5,7 +5,7 @@ from source.file_import.items import Items
 
 
 class ItemTypePanel:
-    def __init__(self, root):
+    def __init__(self, root: tk.LabelFrame):
         self.root = root
         self.varState = []
         # Can use if don't want all options selected by default. will need some work...

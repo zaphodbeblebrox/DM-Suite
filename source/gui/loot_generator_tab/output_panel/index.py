@@ -5,13 +5,12 @@ from source.gui.my_styles import MyStyles
 
 
 class OutputPanel:
-    def __init__(self, frame):
-        self.frame = frame
-        self.output_scrollbar = ttk.Scrollbar(self.frame)
+    def __init__(self, root: tk.LabelFrame):
+        self.root = root
+        self.output_scrollbar = ttk.Scrollbar(self.root)
         self.output_scrollbar.grid(row=0, column=1, sticky="nesw")
-        msg = "Welcome to the Loot Generator!\n"
         self.output = tk.Text(
-            self.frame,
+            self.root,
             height=32,
             width=100,
             state="normal",
@@ -20,12 +19,12 @@ class OutputPanel:
             bd=0,
             yscrollcommand=self.output_scrollbar.set,
         )
-        self.output.insert("insert", msg)
-        self.output.config(state="disabled")
         self.output.grid(row=0, column=0)
         self.output_scrollbar.config(command=self.output.yview)
 
-    def newOutput(self, msg):
+        self.newOutput("Welcome to the Loot Generator!\n")
+
+    def newOutput(self, msg: str) -> None:
         msg = msg + "----------\n"
         self.output.config(state="normal")
         self.output.insert("1.0", msg)  #'row.col' position
